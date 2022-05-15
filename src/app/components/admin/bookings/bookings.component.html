@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="d-flex justify-content-around flex-column align-items-center mb-4">
+    <h2 class="mb-3">
+      Foglalások
+    </h2>
+  </div>
+  <div>
+    <div class="row" *ngIf="!isLoading">
+      <div class="col-12 col-lg-6 mb-3" *ngFor="let booking of bookings">
+        <div class="card p-3">
+          <div class="d-flex justify-content-between align-items-start flex-row">
+            <div>
+              <p>
+                Időpont adatai
+              </p>
+              <hr>
+
+              <p>
+                Időpont: <b>{{booking.day}} - {{booking.time}}</b>
+              </p>
+              <p>
+                Választott szolgáltatás: <b>{{booking.service_name}}</b>
+              </p>
+              <p [ngClass]="booking.status === 'booked' ? 'text-success': 'text-danger'">
+                Státusz: {{statusSetter(booking.status)}}
+              </p>
+            </div>
+            <div>
+              <p>
+                Ügyfél adatai
+              </p>
+              <hr>
+
+              <p>
+                Név: <b>{{booking.name}}</b>
+              </p>
+              <p>
+                Telefonszám: <b>{{booking.phone}}</b>
+              </p>
+              <p>
+                Email: <b>{{booking.email}}</b>
+              </p>
+            </div>
+          </div>
+          <hr>
+          <div class="text-center">
+            <button class="btn btn-danger" (click)="resolveBooking(booking._id)">
+              Lemondás
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

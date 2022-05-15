@@ -1,0 +1,289 @@
+<section class="hero">
+  <div class="container-fluid p-0">
+    <div class="position-relative">
+      <img src="assets/images/salon.jpg" alt="">
+      <h2>
+        A haj a lélek tükre.
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="benefits">
+  <div class="container">
+    <h2>
+      Improve your selfie, go and see your Barber
+    </h2>
+    <div class="row">
+      <div class="col-12 col-lg-4 mb-3">
+        <div class="benefits__box h-100">
+          <img src="assets/icons/barber.svg" alt="">
+          <h3>
+            Férfi hajvágás
+          </h3>
+          <p>
+            A férfi frizurák elkészítéséhez elengedhetetlenek a  jó minőségű professzionális eszközök, no és persze egy átfogó szakmai ismeret
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <div class="benefits__box h-100">
+          <img src="assets/icons/woman-black.svg" alt="">
+          <h3>
+            Női hajvágás
+          </h3>
+          <p>
+            A te személyiséged, a te stílusod jelentítjük meg a hajkoronádon keresztül.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <div class="benefits__box h-100">
+          <img src="assets/icons/barber-tools.svg" alt="">
+          <h3>
+            Szakállvágás
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque erat ac elit dapibus maximus.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <div class="benefits__box h-100">
+          <img src="assets/icons/barber.svg" alt="">
+          <h3>
+            Profi fodrászok
+          </h3>
+          <p>
+            Barbereink tisztában vannak a legújabb trendekkel. Folyamatosan képzik magukat és versenyekre járnak, hogy tudásukat szinten tartsák.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <div class="benefits__box h-100">
+          <img src="assets/icons/woman-black.svg" alt="">
+          <h3>
+            Gyermek hajvágás
+          </h3>
+          <p>
+            A borbély szalon nem csak felnőtt férfiaknak való. A borbélyhoz járást nem lehet elég korán kezdeni.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <div class="benefits__box h-100">
+          <img src="assets/icons/barber-tools.svg" alt="">
+          <h3>
+            Ranom cím
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque erat ac elit dapibus maximus.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="promotion">
+  <div class="container p-0">
+    <div class="promotion__container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <img src="assets/images/hero.jpg" alt="">
+        </div>
+        <div class="col-12 col-lg-6 my-auto">
+          <div>
+            <h2 class="text-center mb-5">
+              Foglalj időpontot, mielőtt elfogynak!
+            </h2>
+            <div class="text-center">
+              <button class="btn">
+                Időpontot foglalok
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="appointments">
+  <div class="container">
+    <div *ngIf="!isLoading && !selectedService">
+      <h2 class="mt-4 text-center mb-4">
+        Válassz szolgálatást
+      </h2>
+      <div class="row">
+        <div class="col-12 col-lg-6 mb-4" *ngFor="let service of services">
+          <div class="appointments__box">
+            <h3>Szolgáltatás neve: <span>{{service.name}}</span></h3>
+            <p>Várható időtartam: <span>{{service.length / 2 }} óra</span></p>
+            <div class="mt-2">
+              <button (click)="onSelectService(service)" class="btn">Ezt választom!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="selectedService && !appointments">
+      <h2 class="mt-4 text-center mb-4">
+        Válassz napot
+      </h2>
+      <div class="row align-items-end appointments__box">
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <div class="form-group">
+              <label
+                for="start_date">
+                Név
+              </label>
+              <input
+                id="start_date"
+                type="date"
+                class="form-control"
+                [(ngModel)]="selectedDay"
+                #start_date1="ngModel"
+                name="start_date"
+
+                required
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <p class="text-muted">
+            Csak hétköznap vállalunk munkát
+          </p>
+        </div>
+        <div class="col-12 text-center mt-3">
+          <button class="btn" (click)="onSelectDay()">
+            Időpontot keresek
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="appointments && !selectedAppointment">
+      <h2 class="mt-4 text-center mb-4">
+        Válassz időpontot
+      </h2>
+      <div class="row" *ngIf="appointments.length > 0">
+        <div class="col-12 col-lg-6 mb-3" *ngFor="let appointment of appointments">
+          <div class="appointments__box">
+            <div class="d-flex justify-content-between">
+              <h3>Elérhető időpont: <b>{{appointment.start_date}}</b></h3>
+              <button (click)="onSelectAppointment(appointment)" class="btn">
+                Véglegesítem
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="appointments.length === 0">
+        <h3 class="text-danger text-center">
+          Nem található időpont a megadott napon
+        </h3>
+      </div>
+    </div>
+    <div *ngIf="selectedAppointment && !isBooked">
+      <h2 class="mt-4 text-center mb-4">
+        Add meg a foglalási adatokat
+      </h2>
+      <form #serviceForm="ngForm" class="appointments__box" (submit)="onSubmitForm()">
+        <div class="text-center new-house-box mx-auto">
+          <div class="row mb-3">
+            <div class="col-12">
+              <div class="form-group">
+                <label
+                  for="name">
+                  Név
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="booking.name"
+                  #nameField="ngModel"
+                  name="name"
+                  required
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-12">
+              <div class="form-group">
+                <label
+                  for="phone">
+                  Telefonszám
+                </label>
+                <input
+                  id="phone"
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="booking.phone"
+                  #phoneField="ngModel"
+                  name="phone"
+                  required
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-12">
+              <div class="form-group">
+                <label
+                  for="email">
+                  Email cím
+                </label>
+                <input
+                  id="email"
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="booking.email"
+                  #emailField="ngModel"
+                  name="email"
+                  required
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 text-center">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="serviceForm.invalid"
+            >
+              Mentés
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="mb-5">
+
+    </div>
+    <div class="appointments__box appointments__box--success mx-auto" *ngIf="isBooked">
+      <h2 class="text-center"> Kedves {{booking.name}}</h2>
+      <p class="text-center">
+        Köszönjük, hogy minket választottál!
+      </p>
+      <h3 class="text-center mb-3">
+        Az időpontod adatai
+      </h3>
+      <p class="text-center">
+        <b class="">Szolgáltás neve:</b>
+        <span> {{booking.service_name}}</span>
+      </p>
+      <p class="text-center">
+        <b class="mr-3">A várható időtartam:</b>
+        <span class="mr-1"> {{booking.length / 2}} </span> óra
+      </p>
+      <p class="text-center">
+        Várunk <span> {{booking.day}} {{booking.time}}</span> -kor a szalonunkban
+      </p>
+    </div>
+  </div>
+</section>
+

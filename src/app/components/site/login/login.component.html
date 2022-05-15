@@ -1,0 +1,61 @@
+<div class="container">
+
+  <h2 class="text-center mb-4">
+    Bejelentkezés
+  </h2>
+
+  <form #userForm="ngForm" (submit)="onSubmitForm()">
+    <div class="text-center new-house-box mx-auto">
+      <div class="row mb-3">
+        <div class="col-12">
+          <div class="form-group">
+            <label
+              for="username">
+              Név
+            </label>
+            <input
+              id="username"
+              type="text"
+              class="form-control col-12"
+              [(ngModel)]="user.username"
+              #nameField="ngModel"
+              name="username"
+              required
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="form-group">
+            <label
+              for="password">
+              Jelszó
+            </label>
+            <input
+              id="password"
+              type="password"
+              class="form-control col-12"
+              [(ngModel)]="user.password"
+              #amountField="ngModel"
+              name="password"
+              [minLength]="6"
+              required
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12 text-center">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="userForm.invalid"
+        >
+          Bejelentkezés
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

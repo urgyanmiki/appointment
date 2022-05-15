@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="d-flex justify-content-around flex-column align-items-center mb-4">
+    <h2 class="mb-3">
+      Szolgálatások
+    </h2>
+    <div>
+      <button (click)="navigate('admin/new-service')" class="btn btn-primary">
+        Új szolgáltatás hozzáadása
+      </button>
+    </div>
+  </div>
+  <div>
+    <div class="row" *ngIf="!isLoading">
+      <div class="col-12 mb-3" *ngFor="let service of services">
+        <div class="card p-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <p>
+                Szolgáltatás neve: <b>{{service.name}}</b>
+              </p>
+              <span>
+               Időtartam: <b>{{service.length / 2 }} óra</b>
+              </span>
+            </div>
+            <button (click)="deleteService(service._id)" class="btn btn-danger"> Törlés </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

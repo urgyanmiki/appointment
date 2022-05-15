@@ -1,0 +1,389 @@
+<div class="container">
+  <div class="text-center">
+    <h2 class="mb-3">
+      Időpontok
+    </h2>
+    <button (click)="onSubmitAppointments()" class="btn btn-primary mb-4">
+      Időpontok mentése
+    </button>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="d-flex justify-content-lg-between flex-column flex-lg-row">
+    <div class="card w-100 m-2 p-2">
+      <h3 class="text-center">
+        Hétfő
+      </h3>
+      <hr>
+      <div>
+        <div>
+          <form #serviceForm="ngForm" (submit)="onSubmitDayOne()" class=" p-1">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="start_date">
+                    Idő
+                  </label>
+                  <input
+                    id="start_date"
+                    type="time"
+                    class="form-control"
+                    [(ngModel)]="dayOneObject.start_date"
+                    #start_date1="ngModel"
+                    name="start_date"
+                    required
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="length">
+                    Időtartam
+                  </label>
+                  <select
+                    [(ngModel)]="dayOneObject.length"
+                    name="length"
+                    id="length"
+                    class="form-control"
+                    #length1="ngModel"
+                    required
+                  >
+                    <option value=""> Válassz iőotartamot</option>
+                    <option value="1"> 0.5 óra</option>
+                    <option value="2"> 1 óra</option>
+                    <option value="3"> 1.5 óra</option>
+                    <option value="4"> 2 óra</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-secondary">
+                Hozzáadás
+              </button>
+            </div>
+          </form>
+        </div>
+        <hr>
+        <h4>
+          Foglalható időpontok
+        </h4>
+        <div>
+          <div class="card mb-2 p-2" *ngFor="let object of dayOneObjects; let i = index">
+            <p>
+              Kezdete: <b>{{object.start_date}}</b>
+            </p>
+            <span>
+            Időtartam: <b>{{object.length / 2}} óra </b>
+          </span>
+            <button class="btn btn-danger" (click)="deleteFromObject(this.dayOneObjects, i)">Törlés</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card w-100 m-2 p-2">
+      <h3 class="text-center">
+        Kedd
+      </h3>
+      <hr>
+      <div>
+        <div>
+          <form #serviceForm="ngForm" (submit)="onSubmitDayTwo()" class=" p-1">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="start_date2">
+                    Idő
+                  </label>
+                  <input
+                    id="start_date2"
+                    type="time"
+                    class="form-control"
+                    [(ngModel)]="dayTwoObject.start_date"
+                    #start_date2="ngModel"
+                    name="start_date2"
+                    required
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="length2">
+                    Időtartam
+                  </label>
+                  <select
+                    [(ngModel)]="dayTwoObject.length"
+                    name="length2"
+                    id="length2"
+                    class="form-control"
+                    #length2="ngModel"
+                    required
+                  >
+                    <option value=""> Válassz iőotartamot</option>
+                    <option value="1"> 0.5 óra</option>
+                    <option value="2"> 1 óra</option>
+                    <option value="3"> 1.5 óra</option>
+                    <option value="4"> 2 óra</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-secondary">
+                Hozzáadás
+              </button>
+            </div>
+          </form>
+        </div>
+        <hr>
+        <h4>
+          Foglalható időpontok
+        </h4>
+        <div>
+          <div class="card mb-2 p-2" *ngFor="let object of dayTwoObjects; let i = index">
+            <p>
+              Kezdete: <b>{{object.start_date}}</b>
+            </p>
+            <span>
+            Időtartam: <b>{{object.length / 2}} óra </b>
+          </span>
+            <button class="btn btn-danger" (click)="deleteFromObject(this.dayTwoObjects, i)">Törlés</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card w-100 m-2 p-2">
+      <h3 class="text-center">
+        Szerda
+      </h3>
+      <hr>
+      <div>
+        <div>
+          <form #serviceForm="ngForm" (submit)="onSubmitDayThree()" class=" p-1">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="start_date3">
+                    Idő
+                  </label>
+                  <input
+                    id="start_date3"
+                    type="time"
+                    class="form-control"
+                    [(ngModel)]="dayThreeObject.start_date"
+                    #start_date3="ngModel"
+                    name="start_date3"
+                    required
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="length3">
+                    Időtartam
+                  </label>
+                  <select
+                    [(ngModel)]="dayThreeObject.length"
+                    name="length3"
+                    id="length3"
+                    class="form-control"
+                    #serviceField="ngModel"
+                    required
+                  >
+                    <option value=""> Válassz iőotartamot</option>
+                    <option value="1"> 0.5 óra</option>
+                    <option value="2"> 1 óra</option>
+                    <option value="3"> 1.5 óra</option>
+                    <option value="4"> 2 óra</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-secondary">
+                Hozzáadás
+              </button>
+            </div>
+          </form>
+        </div>
+        <hr>
+        <h4>
+          Foglalható időpontok
+        </h4>
+        <div>
+          <div class="card mb-2 p-2" *ngFor="let object of dayThreeObjects; let i = index">
+            <p>
+              Kezdete: <b>{{object.start_date}}</b>
+            </p>
+            <span>
+            Időtartam: <b>{{object.length / 2}} óra </b>
+          </span>
+            <button class="btn btn-danger" (click)="deleteFromObject(this.dayThreeObjects, i)">Törlés</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card w-100 m-2 p-2">
+      <h3 class="text-center">
+        Csütörtök
+      </h3>
+      <hr>
+      <div>
+        <div>
+          <form #serviceForm="ngForm" (submit)="onSubmitDayFour()" class=" p-1">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="start_date4">
+                    Idő
+                  </label>
+                  <input
+                    id="start_date4"
+                    type="time"
+                    class="form-control"
+                    [(ngModel)]="dayFourObject.start_date"
+                    #nameField="ngModel"
+                    name="start_date4"
+                    required
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="length4">
+                    Időtartam
+                  </label>
+                  <select
+                    [(ngModel)]="dayFourObject.length"
+                    name="length4"
+                    id="length4"
+                    class="form-control"
+                    #serviceField="ngModel"
+                    required
+                  >
+                    <option value=""> Válassz időtartamot</option>
+                    <option value="1"> 0.5 óra</option>
+                    <option value="2"> 1 óra</option>
+                    <option value="3"> 1.5 óra</option>
+                    <option value="4"> 2 óra</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-secondary">
+                Hozzáadás
+              </button>
+            </div>
+          </form>
+        </div>
+        <hr>
+        <h4>
+          Foglalható időpontok
+        </h4>
+        <div>
+          <div class="card mb-2 p-2" *ngFor="let object of dayFourObjects; let i = index">
+            <p>
+              Kezdete: <b>{{object.start_date}}</b>
+            </p>
+            <span>
+            Időtartam: <b>{{object.length / 2}} óra </b>
+          </span>
+            <button class="btn btn-danger" (click)="deleteFromObject(this.dayFourObjects, i)">Törlés</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card w-100 m-2 p-2">
+      <h3 class="text-center">
+        Péntek
+      </h3>
+      <hr>
+      <div>
+        <div>
+          <form #serviceForm="ngForm" (submit)="onSubmitDayFive()" class=" p-1">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="start_date5">
+                    Idő
+                  </label>
+                  <input
+                    id="start_date5"
+                    type="time"
+                    class="form-control"
+                    [(ngModel)]="dayFiveObject.start_date"
+                    #nameField="ngModel"
+                    name="start_date5"
+                    required
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="length5">
+                    Időtartam
+                  </label>
+                  <select
+                    [(ngModel)]="dayFiveObject.length"
+                    name="length5"
+                    id="length5"
+                    class="form-control"
+                    #serviceField="ngModel"
+                    required
+                  >
+                    <option value=""> Válassz iőotartamot</option>
+                    <option value="1"> 0.5 óra</option>
+                    <option value="2"> 1 óra</option>
+                    <option value="3"> 1.5 óra</option>
+                    <option value="4"> 2 óra</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-secondary">
+                Hozzáadás
+              </button>
+            </div>
+          </form>
+        </div>
+        <hr>
+        <h4>
+          Foglalható időpontok
+        </h4>
+        <div>
+          <div class="card mb-2 p-2" *ngFor="let object of dayFiveObjects; let i = index">
+            <p>
+              Kezdete: <b>{{object.start_date}}</b>
+            </p>
+            <span>
+            Időtartam: <b>{{object.length / 2}} óra </b>
+          </span>
+            <button class="btn btn-danger" (click)="deleteFromObject(this.dayFiveObjects, i)">Törlés</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

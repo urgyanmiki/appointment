@@ -1,0 +1,42 @@
+<nav class="navbar navbar-dark bg-dark mb-4 p-2">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between w-100">
+      <h1 class="text-white mb-0">
+        Street Barber
+      </h1>
+      <div class="d-flex justify-content-between align-items-center">
+        <div *ngIf="!getToken()" class="nav-item active icon-box">
+          <button (click)="navigate('login')" class="nav-link btn btn-primary">
+            <img class="icon-size" src="assets/icons/sign-in-alt-solid.svg">
+          </button>
+        </div>
+        <div *ngIf="getToken()" class="nav-item active icon-box">
+          <button (click)="navigate('admin/free-days')" class="nav-link btn btn-primary">
+            <img class="icon-size" src="assets/icons/bed-solid.svg">
+          </button>
+        </div>
+        <div *ngIf="getToken()" class="nav-item active icon-box">
+          <button (click)="navigate('admin/bookings')" class="nav-link btn btn-primary">
+            <img class="icon-size" src="assets/icons/clipboard-list-solid.svg">
+          </button>
+        </div>
+        <div *ngIf="getToken()" class="nav-item active icon-box">
+          <button (click)="navigate('admin/appointments')" class="nav-link btn btn-primary">
+            <img class="icon-size" src="assets/icons/calendar-check-regular.svg">
+          </button>
+        </div>
+        <div *ngIf="getToken()" class="nav-item active icon-box">
+          <button (click)="navigate('admin/services')" class="nav-link btn btn-primary">
+            <img class="icon-size" src="assets/icons/cut-solid.svg">
+          </button>
+        </div>
+        <div *ngIf="getToken()" class="nav-item active icon-box">
+          <button (click)="onLogOut()" class="nav-link btn btn-danger">
+            <img class="icon-size" src="assets/icons/log-out.svg">
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>

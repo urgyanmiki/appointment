@@ -1,0 +1,128 @@
+.hero {
+  img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    margin-top: -3rem;
+    filter: brightness(0.5);
+    border-radius: 0 20px 20px;
+  }
+
+  h2 {
+    font-size: 32px;
+    color: white;
+    margin-top: -210px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+  }
+}
+
+.benefits {
+  margin-top: 200px;
+  margin-bottom: 40px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #666;
+  }
+
+  &__box {
+    padding: 20px;
+    background: #f1f1f1;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 7px -2px #0000009c;
+
+    img {
+      height: 60px;
+    }
+  }
+}
+
+.promotion {
+  &__container {
+    padding: 20px;
+    background: #dcc38e;
+    border-radius: 10px;
+    box-shadow: 0 0 7px 1px #c0b98b;
+  }
+
+  img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    filter: brightness(0.7);
+    border-radius: 10px;
+  }
+
+  button {
+    background: #0f100c;
+    color: #f1f1f1;
+    text-transform: uppercase;
+    padding: 10px 20px;
+  }
+}
+
+.appointments {
+  h2 {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: #666;
+  }
+
+  &__box {
+    padding: 15px 20px;
+    background: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 0 7px -2px #0000009c;
+
+    &--success{
+      margin-top: 40px;
+      padding: 30px 20px;
+      max-width: 600px;
+    }
+
+    h3 {
+      span {
+        display: inline-block;
+        padding: 5px;
+        background: #565b60;
+        border-radius: 5px;
+        color: white;
+        box-shadow: 0 0 3px 1px #0000002b;
+      }
+    }
+
+    span {
+      display: inline-block;
+      padding: 5px;
+      background: #565b60;
+      color: white;
+      border-radius: 5px;
+      box-shadow: 0 0 3px 1px #0000002b;
+      font-weight: bold;
+    }
+
+    button {
+      background: #0f100c;
+      color: #f1f1f1;
+      text-transform: uppercase;
+      padding: 10px 20px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .hero {
+    h2 {
+      font-size: 78px;
+      margin-top: -290px;
+    }
+  }
+  .benefits {
+    margin-top: 240px;
+  }
+}

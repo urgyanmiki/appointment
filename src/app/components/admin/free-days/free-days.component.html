@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="d-flex justify-content-around flex-column align-items-center mb-4">
+    <h2 class="mb-3">
+      Szabadnapok
+    </h2>
+  </div>
+  <form (submit)="onSubmitForm()">
+    <div class="row mb-3">
+      <div class="col-12">
+        <div class="form-group">
+          <label
+            for="date">
+            Nap
+          </label>
+          <input
+            id="date"
+            type="date"
+            class="form-control"
+            [(ngModel)]="freeDay.day"
+            #nameField="ngModel"
+            name="name"
+            required
+          >
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center">
+          <button class="btn btn-primary">
+            Mentés
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="mt-5">
+    <div class="row" *ngIf="!isLoading">
+      <div class="col-12 col-lg-6 mb-3" *ngFor="let freeDay of freeDays">
+        <div class="card p-3">
+          <div class="d-flex justify-content-between align-items-start flex-row">
+            <div>
+              <p>
+                Szabanap: {{freeDay.day}}
+              </p>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-danger" (click)="deleteFreeDay(freeDay._id)">
+              Lemondás
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

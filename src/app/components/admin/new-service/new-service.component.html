@@ -1,0 +1,65 @@
+<div class="container">
+
+  <h2 class="text-center mb-4">
+    Szolgáltatás létrehozása
+  </h2>
+
+  <form #serviceForm="ngForm" (submit)="onSubmitForm()">
+    <div class="text-center new-house-box mx-auto">
+      <div class="row mb-3">
+        <div class="col-12">
+          <div class="form-group">
+            <label
+              for="servicename">
+              Név
+            </label>
+            <input
+              id="servicename"
+              type="text"
+              class="form-control"
+              [(ngModel)]="service.name"
+              #nameField="ngModel"
+              name="servicename"
+              required
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="form-group">
+            <label
+              for="length">
+              Időtartam
+            </label>
+            <select
+              [(ngModel)]="service.length"
+              name="length"
+              id="length"
+              class="form-control"
+              #serviceField="ngModel"
+              required
+            >
+              <option value=""> Válassz iőotartamot</option>
+              <option value="1"> 0.5 óra</option>
+              <option value="2"> 1 óra</option>
+              <option value="3"> 1.5 óra</option>
+              <option value="4"> 2 óra</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12 text-center">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="serviceForm.invalid"
+        >
+          Mentés
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
